@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if travel %}Update Travel{% else %}Create Travel{% endif %}</title>
+</head>
+<body>
+<h1>{% if travel %}Update Travel{% else %}Create Travel{% endif %}</h1>
+<form method="post">
+    
+    {% csrf_token %}
+    
+    <label for="destination_name">Destination Name</label><br>
+    <input type="text" name="destination_name" id="destination_name" value="{{ travel.destination_name }}"><br><br>
+
+    <label for="country">Country</label><br>
+    <input type="text" name="country" id="country" value="{{ travel.country }}"><br><br>
+
+    <label for="description">Description</label><br>
+    <textarea name="description" id="description" cols="30" rows="10">{{ travel.description }}</textarea><br><br>
+
+    <label for="popular_season">Popular Season</label><br>
+    <input type="text" name="popular_season" id="popular_season" value="{{ travel.popular_season }}"><br><br>
+
+    {% if travel %}
+    <input type="submit" value="Update"><br><br>
+    <button><a href="{{ travel.get_detail_url }}">Back to detail</a></button>
+    <br><br>
+    {% else %}
+    <input type="submit" value="Create Travel"><br><br>
+    <button><a href="{% url 'travel:list' %}">Back to List</a></button>  <button><a href="{% url 'home' %}">Back to Home</a></button>
+    <br><br>
+    {% endif %}
+</form>
+
+</body>
+</html>

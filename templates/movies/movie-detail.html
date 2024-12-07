@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+<h1>{{ movie.title }}</h1>
+
+<h3><strong>Title:</strong> {{ movie.title }}</h3>
+<h3><strong>Director:</strong> {{ movie.director }}</h3>
+<h3><strong>Release Year:</strong> {{ movie.release_year }}$</h3>
+<h3><strong>Genre:</strong> {{ movie.genre }}$</h3>
+
+<br>
+<button><a href="{{ movie.get_update_url }}">Update</a></button> <button><a href="{{ movie.get_delete_url }}">Delete</a></button> <button><a href="{% url 'movies:list' %}">Back to List</a></button>
+<br>
+
+</body>
+</html>
